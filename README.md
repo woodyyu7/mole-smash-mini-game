@@ -42,4 +42,5 @@ npx expo start
 
 ## Coding standards
 
-See `.context/mole-smash-mini-game/CODING_STANDARDS.md`.
+See the workflow framework's project knowledge:
+`../agentic-ai/.context/mole-smash-mini-game/CODING_STANDARDS.md`
