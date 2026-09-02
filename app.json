@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Mole Smash",
+    "slug": "mole-smash-mini-game",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "mole-smash",
+    "platforms": ["ios", "android", "web"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.woodyyu.molesmash"
+    },
+    "android": {
+      "package": "com.woodyyu.molesmash"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    }
+  }
+}
