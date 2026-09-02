@@ -125,6 +125,21 @@ the QR code. Phone and computer must be on the same Wi-Fi network (or use
   `adb reverse tcp:8081 tcp:8081` once.
 - **iOS Simulator opens but shows nothing**: ensure Metro is running and press
   `Cmd+R` inside the Simulator, or `Device ▸ Erase All Content and Settings`.
+- **"Unable to boot device because we cannot determine the runtime bundle"**
+  (simulator won't start): CoreSimulator's daemon is caching a stale runtime
+  mapping (common after Xcode/runtime updates). Restart it — takes seconds:
+  ```bash
+  xcrun simctl shutdown all 2>/dev/null
+  killall -9 com.apple.CoreSimulator.CoreSimulatorService
+  ```
+  Then run `npm run ios` again. If a device still refuses to boot, remove
+  stale entries (`xcrun simctl delete unavailable`) and, as a last resort,
+  re-download the runtime (`xcodebuild -downloadPlatform iOS`, ~8 GB).
+- **`npm run ios` / `npm run android` use Expo Go** and never require a native
+  build. Only `npx expo run:ios` / `npx expo run:android` compile a native
+  project — those need CocoaPods >= 1.10 (`brew install cocoapods`); an
+  outdated CocoaPods fails with `Invalid Podfile ... undefined method
+  'post_integrate'`.
 
 ## Dependency count note
 
