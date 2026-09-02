@@ -24,10 +24,12 @@ async function loadBestScore() {
   if (store) {
     try {
       const raw = await store.getItem(KEY);
-      const n = Number(raw);
-      return Number.isFinite(n) ? n : 0;
+      if (raw !== null && raw !== undefined) {
+        const n = Number(raw);
+        if (Number.isFinite(n)) return n;
+      }
     } catch {
-      return 0;
+      // store unavailable (e.g. plain Node test run) — fall through to memory
     }
   }
   return memoryStore[KEY] ?? 0;
